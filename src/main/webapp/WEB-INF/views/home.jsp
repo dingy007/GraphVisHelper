@@ -20,6 +20,42 @@
 }
 </style>
 </head>
+
+<body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+	<h1>Graph with X-Y co-ordinates</h1>
+	<script type="text/javascript">
+		var spaceCircles = [10, 30, 50];
+		
+	
+		var svgContainer = 		d3.select("body")
+								  .append("svg")
+								  .attr("width", 200)
+								  .attr("height", 200)
+								  .style("border", "1px solid black");
+		var circles = 	svgContainer.selectAll("circle")
+									.data(spaceCircles)
+									.enter()
+									.append("circle")
+									
+var circleAttributes = circles
+                       .attr("cx", function(d) {return d;})
+                       .attr("cy", function (d) {return d;})
+                       .attr("r", 10);
+                       //.attr("r", function (d) { return d; });									
+		
+		
+			
+	</script>
+		 
+			<svg width = "50" height="50">
+				<circle cx="25" cy="25" r="25" fill = "purple" />
+			</svg>
+		
+
+</body>
+
+<!-- 
 <body>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 	<h1>Graph Visualizer</h1>
@@ -85,6 +121,7 @@
 			d3.select(this).classed("fixed", d.fixed = true);
 		}
 	</script>
-
 </body>
+-->
+
 </html>

@@ -52,10 +52,14 @@ public class SimpleGraph implements Serializable{
      * @param nodes
      * @param links
      */
-    public SimpleGraph(List<Node> nodes, List<Edge> links) {
+    @SuppressWarnings("unchecked")
+	public SimpleGraph(List<Node> nodes, List<Edge> links) {
         this.nodes = nodes;
         this.numOfNodes = nodes.size();
         this.links = links;
+        adj = (Bag<Edge>[]) new Bag[nodes.size()];
+        for (int v = 0; v < nodes.size(); v++)
+            adj[v] = new Bag<Edge>();
     }
 
     /**
@@ -94,10 +98,11 @@ public class SimpleGraph implements Serializable{
      *     The links
      */
     @JsonProperty("links")
-    public void setLinks(List<Edge> links) {
+/*    public void setLinks(List<Edge> links) {
+    	adj[v].add(e);
         this.links = links;
     }
-
+*/
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
@@ -140,9 +145,9 @@ public class SimpleGraph implements Serializable{
 		return numOfNodes;
 	}
 
-	public Object adj(int v) {
+	public Iterable<Edge> adj(int v) {
 		// TODO Auto-generated method stub
-		return null;
+		return adj[v];
 	}
 
 }
